@@ -322,7 +322,143 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
   
   
-// 	function filterTrainers() {
+
+
+	const selectedDirectionInput = document.querySelectorAll('input[name="direction"]:checked');
+	let selectedDirection = "all"; 
+	  if (selectedDirectionInput.length > 0) {
+		  selectedDirection = selectedDirectionInput[0].value;
+	  }
+   const selectedCategory = document.querySelector('input[name="category"]:checked').value;
+   
+   const filteredTrainers = DATA.filter((trainer) => {
+	 return (
+	(selectedDirectionInput === "all" || trainer.specialization  === selectedDirection) &&
+	(selectedCategory === "all" || trainer.category  === selectedCategory)
+	 );
+   });
+ console.log(filteredTrainers);
+ const showBtn = document.querySelector('.filters__submit')
+ showBtn.addEventListener('click', (event) => {
+	    event.preventDefault();
+		console.log('я працюю')
+		renderTrainers(filteredTrainers);
+	})
+
+
+	// МШЙ КОД ЯКИЙ НА ФІЛЬТРАЦІЮ ЯКИЙ НЕ ПРАЦЮЄ
+
+
+//  const showBtn = document.querySelector('.filters__submit')
+//  showBtn.addEventListener('click', (event) => {
+//     event.preventDefault();
+//     const selectedDirectionInput = document.querySelector('input[name="direction"]:checked');
+//     const selectedDirection = selectedDirectionInput ? selectedDirectionInput.value : 'all';
+//     const selectedCategoryInput = document.querySelector('input[name="category"]:checked');
+//     const selectedCategory = selectedCategoryInput ? selectedCategoryInput.value : 'all';
+    
+//     console.log(selectedDirection, selectedCategory);
+//     filterTrainers(selectedDirection, selectedCategory);
+//     console.log('я працюю');
+// });
+// function filterTrainers(selectedDirection, selectedCategory) {
+//     const filteredTrainers = DATA.filter((trainer) => {
+//         return (
+//             (selectedDirection === "all" || trainer.specialization === selectedDirection) &&
+//             (selectedCategory === "all" || trainer.category === selectedCategory)
+//         );
+//     });
+//     console.log(filteredTrainers); 
+//     renderTrainers(filteredTrainers);
+// }
+
+
+
+	renderTrainers();
+	 
+	document.querySelector(".sorting").removeAttribute("hidden");
+	document.querySelector(".sidebar").removeAttribute("hidden");
+  
+	
+  });
+window.addEventListener('load', ()=>{
+	document.getElementById('load').remove()
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+// 	function filterTrainers(data) {
+// 	  const selectedDirection = document.querySelector('.filters__input[name="direction"]:checked')?.value || 'all';
+// 	  const selectedCategory = document.querySelector('.filters__input[name="category"]:checked')?.value || 'all';
+  
+// 	  const filteredTrainers =data.filter(function (trainer) {
+// 		return (selectedDirection === "all" ( trainer.specialization === selectedDirection)) &&
+// 			   (selectedCategory === "all" ( trainer.category === selectedCategory));
+// 	  });
+  
+// 	  renderTrainers(filteredTrainers);
+// 	};
+  
+//   const showBtn = document.querySelector('.filters__submit')
+  
+//   showBtn.addEventListener('click',(event)=>
+//   {
+// 	event.preventDefault()
+//   filterTrainers()
+//   console.log('я працюю');
+//   }
+//   )
+  
+  
+// 	renderTrainers();
+	 
+// 	document.querySelector(".sorting").removeAttribute("hidden");
+// 	document.querySelector(".sidebar").removeAttribute("hidden");
+  
+  
+	
+	
+//   });
+
+
+  // 	function filterTrainers() {
 // 	  const selectedDirection = document.querySelector('.filters__input[name="direction"]:checked')?.value || 'all';
 // 	  const selectedCategory = document.querySelector('.filters__input[name="category"]:checked')?.value || 'all';
 //   console.log(selectedDirection, selectedCategory);
@@ -393,210 +529,3 @@ document.addEventListener("DOMContentLoaded", function () {
 // 	   });
 // }
 // renderTrainers(filterTrainers);
-
-const selectedDirectionInput = document.querySelectorAll('input[name="direction"]:checked');
-  let selectedDirection = "all"; 
-    if (selectedDirectionInput.length > 0) {
-        selectedDirection = selectedDirectionInput[0].value;
-    }
- const selectedCategory = document.querySelector('input[name="category"]:checked').value;
- 
- const filteredTrainers = DATA.filter((trainer) => {
-   return (
-  (selectedDirectionInput === "all" || trainer.specialization  === selectedDirection) &&
-  (selectedCategory === "all" || trainer.category  === selectedCategory)
-   );
-  
- });
- console.log(filteredTrainers);
- const showBtn = document.querySelector('.filters__submit')
- showBtn.addEventListener('click', (event) => {
-	    event.preventDefault();
-		console.log('я працюю')
-		renderTrainers(filteredTrainers);
-	})
-//  const showBtn = document.querySelector('.filters__submit')
-//  showBtn.addEventListener('click', (event) => {
-//     event.preventDefault();
-//     const selectedDirectionInput = document.querySelector('input[name="direction"]:checked');
-//     const selectedDirection = selectedDirectionInput ? selectedDirectionInput.value : 'all';
-//     const selectedCategoryInput = document.querySelector('input[name="category"]:checked');
-//     const selectedCategory = selectedCategoryInput ? selectedCategoryInput.value : 'all';
-    
-//     console.log(selectedDirection, selectedCategory);
-//     filterTrainers(selectedDirection, selectedCategory);
-//     console.log('я працюю');
-// });
-// function filterTrainers(selectedDirection, selectedCategory) {
-//     const filteredTrainers = DATA.filter((trainer) => {
-//         return (
-//             (selectedDirection === "all" || trainer.specialization === selectedDirection) &&
-//             (selectedCategory === "all" || trainer.category === selectedCategory)
-//         );
-//     });
-//     console.log(filteredTrainers); 
-//     renderTrainers(filteredTrainers);
-// }
-
-
-
-	renderTrainers();
-	 
-	document.querySelector(".sorting").removeAttribute("hidden");
-	document.querySelector(".sidebar").removeAttribute("hidden");
-  
-  
-	
-	
-  });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// document.addEventListener("DOMContentLoaded", function () {
-// 	const container = document.querySelector(".trainers-cards__container");
-// 	const template = document.querySelector("#trainer-card");
-// 	const sortingBtns = document.querySelectorAll('.sorting__btn')
-	 
-	
-// 	function renderTrainers() {
-// 	  container.innerHTML = "";
-// 	  DATA.forEach((trainer) => {
-// 		const clone = template.content.cloneNode(true);
-// 		clone.querySelector(".trainer__img").src = trainer.photo;
-// 		clone.querySelector(".trainer__name").textContent = `${trainer["first name"]} ${trainer["last name"]}`;
-// 		const showBtn = clone.querySelector(".trainer__show-more");
-  
-// 		showBtn.addEventListener("click", function () {
-// 		  showTrainerModal(trainer);
-// 		});
-  
-// 		container.appendChild(clone);
-// 	  });
-// 	}
-  
-// 	function showTrainerModal(trainer) {
-// 	  const modalTemplate = document.getElementById("modal-template");
-  
-// 	  const modalClone = modalTemplate.content.cloneNode(true);
-// 	  const modalCloseButton = modalClone.querySelector(".modal__close");
-// 	  modalCloseButton.addEventListener("click", closeModal);
-  
-// 	  modalClone.querySelector(".modal__name").textContent = `${trainer["first name"]} ${trainer["last name"]}`;
-// 	  modalClone.querySelector(".modal__point--category").textContent =` Категорія: ${trainer.category}`;
-// 	  modalClone.querySelector(".modal__point--experience").textContent = `Напрям тренера:${trainer.experience}`;
-// 	  modalClone.querySelector(".modal__text").textContent = `${trainer.description}`;
-// 	  modalClone.querySelector(".modal__img").src = `${trainer.photo}`;
-  
-// 	  document.body.appendChild(modalClone);
-// 	  document.body.style.overflow = "hidden";
-  
-// 	  function closeModal() {
-// 		const modal = document.querySelector(".modal");
-  
-// 		modal.remove();
-  
-// 		document.body.style.overflow = "";
-// 	  }
-// 	}
-  
-  
-// 	function sortByLastName() {
-// 	  DATA.sort((a, b) => a['last name'].localeCompare(b['last name'], 'uk'));
-	  
-// 	  renderTrainers();
-//   }
-//   function sortByExperience() {
-// 	DATA.sort((a, b) => parseInt(b.experience) - parseInt(a.experience));
-// 	renderTrainers();
-//   }
-  
-//   sortingBtns.forEach(btn => {
-// 		btn.addEventListener("click", () => {
-// 			sortingBtns.forEach(btn => btn.classList.remove("sorting__btn--active"));
-// 			btn.classList.add("sorting__btn--active");
-	
-// 			if (btn.classList.contains("sorting__element--last-name")) {
-			 
-// 				sortByLastName();
-// 			} else if (btn.classList.contains("sorting__element--experience")) {
-			 
-// 				sortByExperience();
-// 			}
-			
-// 		});
-		
-// 	});
-  
-  
-// 	function filterTrainers(data) {
-// 	  const selectedDirection = document.querySelector('.filters__input[name="direction"]:checked')?.value || 'all';
-// 	  const selectedCategory = document.querySelector('.filters__input[name="category"]:checked')?.value || 'all';
-  
-// 	  const filteredTrainers =data.filter(function (trainer) {
-// 		return (selectedDirection === "all" ( trainer.specialization === selectedDirection)) &&
-// 			   (selectedCategory === "all" ( trainer.category === selectedCategory));
-// 	  });
-  
-// 	  renderTrainers(filteredTrainers);
-// 	};
-  
-//   const showBtn = document.querySelector('.filters__submit')
-  
-//   showBtn.addEventListener('click',(event)=>
-//   {
-// 	event.preventDefault()
-//   filterTrainers()
-//   console.log('я працюю');
-//   }
-//   )
-  
-  
-// 	renderTrainers();
-	 
-// 	document.querySelector(".sorting").removeAttribute("hidden");
-// 	document.querySelector(".sidebar").removeAttribute("hidden");
-  
-  
-	
-	
-//   });
-
-
-  
