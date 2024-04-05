@@ -324,53 +324,35 @@ document.addEventListener("DOMContentLoaded", function () {
   
 
 
-	const selectedDirectionInput = document.querySelectorAll('input[name="direction"]:checked');
-	let selectedDirection = "all"; 
-	  if (selectedDirectionInput.length > 0) {
-		  selectedDirection = selectedDirectionInput[0].value;
-	  }
-   const selectedCategory = document.querySelector('input[name="category"]:checked').value;
-   
-   const filteredTrainers = DATA.filter((trainer) => {
-	 return (
-	(selectedDirectionInput === "all" || trainer.specialization  === selectedDirection) &&
-	(selectedCategory === "all" || trainer.category  === selectedCategory)
-	 );
-   });
- console.log(filteredTrainers);
+
+
+
+	
+
+
  const showBtn = document.querySelector('.filters__submit')
  showBtn.addEventListener('click', (event) => {
-	    event.preventDefault();
-		console.log('я працюю')
-		renderTrainers(filteredTrainers);
-	})
+    event.preventDefault();
+    const selectedDirectionInput = document.querySelector('input[name="direction"]:checked');
+    const selectedDirection = selectedDirectionInput ? selectedDirectionInput.labels[0].textContent : 'all';
 
-
-	// МШЙ КОД ЯКИЙ НА ФІЛЬТРАЦІЮ ЯКИЙ НЕ ПРАЦЮЄ
-
-
-//  const showBtn = document.querySelector('.filters__submit')
-//  showBtn.addEventListener('click', (event) => {
-//     event.preventDefault();
-//     const selectedDirectionInput = document.querySelector('input[name="direction"]:checked');
-//     const selectedDirection = selectedDirectionInput ? selectedDirectionInput.value : 'all';
-//     const selectedCategoryInput = document.querySelector('input[name="category"]:checked');
-//     const selectedCategory = selectedCategoryInput ? selectedCategoryInput.value : 'all';
+    const selectedCategoryInput = document.querySelector('input[name="category"]:checked');
+    const selectedCategory = selectedCategoryInput ? selectedCategoryInput.labels[0].textContent.toLowerCase() : 'all';
     
-//     console.log(selectedDirection, selectedCategory);
-//     filterTrainers(selectedDirection, selectedCategory);
-//     console.log('я працюю');
-// });
-// function filterTrainers(selectedDirection, selectedCategory) {
-//     const filteredTrainers = DATA.filter((trainer) => {
-//         return (
-//             (selectedDirection === "all" || trainer.specialization === selectedDirection) &&
-//             (selectedCategory === "all" || trainer.category === selectedCategory)
-//         );
-//     });
-//     console.log(filteredTrainers); 
-//     renderTrainers(filteredTrainers);
-// }
+    console.log(selectedDirection, selectedCategory);
+    filterTrainers(selectedDirection, selectedCategory);
+    console.log('я працюю');
+});
+function filterTrainers(selectedDirection, selectedCategory) {
+    const filteredTrainers = DATA.filter((trainer) => {
+        return (
+            (selectedDirection === "all" || trainer.specialization === selectedDirection) &&
+            (selectedCategory === "all" || trainer.category === selectedCategory)
+        );
+    });
+    console.log(filteredTrainers); 
+    renderTrainers(filteredTrainers);
+}
 
 
 
@@ -384,3 +366,27 @@ document.addEventListener("DOMContentLoaded", function () {
 window.addEventListener('load', ()=>{
 	document.getElementById('load').remove()
 })
+
+
+
+
+// 	const selectedDirectionInput = document.querySelectorAll('input[name="direction"]:checked');
+// 	let selectedDirection = "all"; 
+// 	  if (selectedDirectionInput.length > 0) {
+// 		  selectedDirection = selectedDirectionInput[0].value;
+// 	  }
+//    const selectedCategory = document.querySelector('input[name="category"]:checked').value;
+   
+//    const filteredTrainers = DATA.filter((trainer) => {
+// 	 return (
+// 	(selectedDirectionInput === "all" || trainer.specialization  === selectedDirection) &&
+// 	(selectedCategory === "all" || trainer.category  === selectedCategory)
+// 	 );
+//    });
+//  console.log(filteredTrainers);
+//  const showBtn = document.querySelector('.filters__submit')
+//  showBtn.addEventListener('click', (event) => {
+// 	    event.preventDefault();
+// 		console.log('я працюю')
+// 		renderTrainers(filteredTrainers);
+// 	})
