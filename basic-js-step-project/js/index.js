@@ -334,10 +334,10 @@ document.addEventListener("DOMContentLoaded", function () {
  showBtn.addEventListener('click', (event) => {
     event.preventDefault();
     const selectedDirectionInput = document.querySelector('input[name="direction"]:checked');
-    const selectedDirection = selectedDirectionInput ? selectedDirectionInput.labels[0].textContent : 'all';
+    const selectedDirection = selectedDirectionInput ? selectedDirectionInput.labels[0].textContent.trim() : 'all';
 
     const selectedCategoryInput = document.querySelector('input[name="category"]:checked');
-    const selectedCategory = selectedCategoryInput ? selectedCategoryInput.labels[0].textContent.toLowerCase() : 'all';
+    const selectedCategory = selectedCategoryInput ? selectedCategoryInput.labels[0].textContent.trim() : 'all';
     
     console.log(selectedDirection, selectedCategory);
     filterTrainers(selectedDirection, selectedCategory);
