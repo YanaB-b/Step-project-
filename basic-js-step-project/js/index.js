@@ -346,8 +346,8 @@ document.addEventListener("DOMContentLoaded", function () {
 function filterTrainers(selectedDirection, selectedCategory) {
     const filteredTrainers = DATA.filter((trainer) => {
         return (
-            (selectedDirection === "всі" || trainer.specialization === selectedDirection) &&
-            (selectedCategory === "всі" || trainer.category === selectedCategory)
+            (selectedDirection === "ВСІ" || trainer.specialization === selectedDirection) &&
+            (selectedCategory === "ВСІ" || trainer.category === selectedCategory)
         );
     });
     console.log(filteredTrainers); 
